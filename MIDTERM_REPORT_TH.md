@@ -2,9 +2,9 @@
 
 ## ระบบ Activity Lifecycle, แผนที่แบบ State Hoisting และเครื่องคำนวณค่างวดแบบ MVVM
 
-ผู้จัดทำ: **กฤษฎา ศรีคิลิน**  
-รหัสนักศึกษา: **67102122111**  
-Repository: <https://github.com/Frokezero/mindeMIND>
+ผู้จัดทำ: **ปาจรีย์ สุคนธชาติ**  
+รหัสนักศึกษา: **67102122131**  
+Repository: <https://github.com/pajvi51-create/Android-Midterm-67102122131>
 
 ---
 
@@ -518,13 +518,13 @@ Result Card แสดงข้อมูลครบ ได้แก่
 
 ## 24. สคริปต์พรีเซนต์แบบย่อ
 
-> สวัสดีครับ ผมกฤษฎา ศรีคิลิน รหัสนักศึกษา 67102122111 แอปนี้พัฒนาด้วย Kotlin และ Jetpack Compose แบ่งเป็นสามส่วนตามข้อสอบ คือ Activity Lifecycle, แผนที่แบบ State Hoisting และเครื่องคำนวณค่างวดแบบ MVVM
+> สวัสดีค่ะ ดิฉันปาจรีย์ สุคนธชาติ รหัสนักศึกษา 67102122131 แอปนี้พัฒนาด้วย Kotlin และ Jetpack Compose แบ่งเป็นสามส่วนตามข้อสอบ คือ Activity Lifecycle, แผนที่แบบ State Hoisting และเครื่องคำนวณค่างวดแบบ MVVM
 >
-> ข้อแรก ผมนำภาพจริงเข้า Resource Drawable และแสดงด้วย Image Composable ใน MainActivity มีการ Override Lifecycle ครบหกเมทอด ทุกเมทอดเรียกฟังก์ชันกลางเพื่อแสดง Toast โดยใช้ applicationContext และบันทึกลง Logcat เมื่อหมุนจอจะเห็นลำดับ onPause, onStop, onDestroy แล้วตามด้วย onCreate, onStart และ onResume ส่วน GitHub มี Commit แยกแต่ละ Lifecycle ครบตามเกณฑ์
+> ข้อแรก ดิฉันนำภาพจริงเข้า Resource Drawable และแสดงด้วย Image Composable ใน MainActivity มีการ Override Lifecycle ครบหกเมทอด ทุกเมทอดเรียกฟังก์ชันกลางเพื่อแสดง Toast โดยใช้ applicationContext และบันทึกลง Logcat เมื่อหมุนจอจะเห็นลำดับ onPause, onStop, onDestroy แล้วตามด้วย onCreate, onStart และ onResume ส่วน GitHub มี Commit แยกแต่ละ Lifecycle ครบตามเกณฑ์
 >
-> ข้อสอง ผมแยก MapScreen เป็น Stateful Composable ซึ่งเก็บ Latitude และ Longitude ด้วย rememberSaveable และแยก CoordinateForm เป็น Stateless Composable ที่รับ State และ Callbacks ทำให้ข้อมูลไหลทางเดียว เมื่อข้อมูลว่างหรือเกินช่วงจะ Toast และไม่สร้าง Intent เมื่อข้อมูลถูกต้อง ปุ่มเปิดแอปแผนที่จะใช้ ACTION_VIEW กับ URI แบบ geo:lat,lng นอกจากนี้ผมเพิ่มแผนที่ภายในด้วย Leaflet และ OpenStreetMap ซึ่งลาก ซูม และติดตามหมุดได้
+> ข้อสอง ดิฉันแยก MapScreen เป็น Stateful Composable ซึ่งเก็บ Latitude และ Longitude ด้วย rememberSaveable และแยก CoordinateForm เป็น Stateless Composable ที่รับ State และ Callbacks ทำให้ข้อมูลไหลทางเดียว เมื่อข้อมูลว่างหรือเกินช่วงจะ Toast และไม่สร้าง Intent เมื่อข้อมูลถูกต้อง ปุ่มเปิดแอปแผนที่จะใช้ ACTION_VIEW กับ URI แบบ geo:lat,lng นอกจากนี้ดิฉันเพิ่มแผนที่ภายในด้วย Leaflet และ OpenStreetMap ซึ่งลาก ซูม และติดตามหมุดได้
 >
-> ข้อสาม ผมแยก MVVM เป็นสามส่วน Model เก็บสูตรคำนวณ ViewModel เก็บ UI State และรับ Event ส่วน View มีหน้าที่แสดง UI เท่านั้น View เรียก ViewModel ด้วยฟังก์ชัน viewModel() จึงรักษาข้อมูลข้ามการหมุนจอได้ สูตรเป็นดอกเบี้ยคงที่ และมี Unit Test ตรวจทั้ง Calculator และ ViewModel ครับ
+> ข้อสาม ดิฉันแยก MVVM เป็นสามส่วน Model เก็บสูตรคำนวณ ViewModel เก็บ UI State และรับ Event ส่วน View มีหน้าที่แสดง UI เท่านั้น View เรียก ViewModel ด้วยฟังก์ชัน viewModel() จึงรักษาข้อมูลข้ามการหมุนจอได้ สูตรเป็นดอกเบี้ยคงที่ และมี Unit Test ตรวจทั้ง Calculator และ ViewModel ค่ะ
 
 ---
 

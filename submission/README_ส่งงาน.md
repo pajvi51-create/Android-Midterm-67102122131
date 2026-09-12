@@ -1,12 +1,12 @@
 # ชุดส่งข้อสอบกลางภาค
 
-ผู้จัดทำ: กฤษฎา ศรีคิลิน  
-รหัสนักศึกษา: 67102122111  
-GitHub: https://github.com/Frokezero/mindeMIND
+ผู้จัดทำ: ปาจรีย์ สุคนธชาติ  
+รหัสนักศึกษา: 67102122131  
+GitHub: https://github.com/pajvi51-create/Android-Midterm-67102122131
 
 ## ไฟล์สำหรับส่ง
 
-1. `67102122111_kotlin_java.zip` — Source code โฟลเดอร์ Kotlin/Java ตามคำสั่งอาจารย์
+1. `67102122131_kotlin_java.zip` — Source code โฟลเดอร์ Kotlin/Java ตามคำสั่งอาจารย์
 2. `videos/ข้อ1_Activity_Lifecycle.mp4` — เปิดแอปและหมุนจอเพื่อตรวจ Lifecycle/Toast
 3. `videos/ข้อ2_State_Hoisting_Map.mp4` — กรอกพิกัด แสดงหมุด ลาก/ซูม และสาธิตแผนที่
 4. `videos/ข้อ3_MVVM_Installment.mp4` — กรอกราคา คำนวณผล และหมุนจอ
@@ -20,7 +20,7 @@ GitHub: https://github.com/Frokezero/mindeMIND
 
 ## Checklist ก่อนส่ง Classroom
 
-- [ ] อัปโหลด `67102122111_kotlin_java.zip`
+- [ ] อัปโหลด `67102122131_kotlin_java.zip`
 - [ ] อัปโหลดวิดีโอทั้ง 3 ไฟล์และลองเปิดเล่นหลังอัปโหลด
 - [ ] ตรวจว่า GitHub Repository เปิดให้อาจารย์เข้าถึงได้
 - [ ] ตรวจว่า Commit Lifecycle อย่างน้อย 6 รายการยังแสดงบน GitHub
