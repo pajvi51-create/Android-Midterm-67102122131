@@ -12,6 +12,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +35,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
@@ -47,6 +48,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -104,35 +106,53 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MidtermApp() {
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
-    val tabs = listOf("Lifecycle", "แผนที่", "ค่างวด")
+    val tabs = listOf("♡ โปรไฟล์", "⌖ แผนที่", "฿ ค่างวด")
 
     Scaffold(containerColor = MaterialTheme.colorScheme.background) { innerPadding ->
-        Column(Modifier.fillMaxSize().padding(innerPadding)) {
-            Surface(color = MaterialTheme.colorScheme.primaryContainer) {
-                Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 18.dp)) {
+        Column(
+            Modifier.fillMaxSize().padding(innerPadding).background(
+                Brush.verticalGradient(listOf(MaterialTheme.colorScheme.primaryContainer, MaterialTheme.colorScheme.background), endY = 650f)
+            )
+        ) {
+            Column(Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 20.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                    Surface(shape = CircleShape, color = MaterialTheme.colorScheme.primary, modifier = Modifier.size(48.dp)) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Text("P", color = MaterialTheme.colorScheme.onPrimary, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Black)
+                        }
+                    }
+                    Column {
                     Text(
-                        "ANDROID MODERN",
+                        "PAJAREE'S SPACE",
                         color = MaterialTheme.colorScheme.primary,
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.ExtraBold
                     )
                     Text(
-                        "Midterm Workspace",
-                        style = MaterialTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.Bold
+                        "My Android Studio",
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.ExtraBold
                     )
-                    Text("Lifecycle · State Hoisting · MVVM", style = MaterialTheme.typography.bodyMedium)
+                    }
                 }
             }
-            PrimaryTabRow(selectedTabIndex = selectedTab) {
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = 18.dp).background(MaterialTheme.colorScheme.surface, RoundedCornerShape(24.dp)).padding(5.dp),
+                horizontalArrangement = Arrangement.spacedBy(5.dp)
+            ) {
                 tabs.forEachIndexed { index, title ->
-                    Tab(
-                        selected = selectedTab == index,
-                        onClick = { selectedTab = index },
-                        text = { Text(title, fontWeight = if (selectedTab == index) FontWeight.Bold else FontWeight.Normal) }
-                    )
+                    val selected = selectedTab == index
+                    Surface(
+                        modifier = Modifier.weight(1f).clip(RoundedCornerShape(19.dp)).clickable { selectedTab = index },
+                        shape = RoundedCornerShape(19.dp),
+                        color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
+                        contentColor = if (selected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
+                    ) {
+                        Text(title, modifier = Modifier.padding(vertical = 11.dp), textAlign = TextAlign.Center, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
+            Spacer(Modifier.height(4.dp))
             when (selectedTab) {
                 0 -> LifecycleScreen()
                 1 -> MapScreen()
@@ -145,9 +165,12 @@ private fun MidtermApp() {
 @Composable
 private fun ScreenTitle(number: String, title: String, subtitle: String) {
     Column(Modifier.fillMaxWidth()) {
-        Text(number, color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.Bold)
-        Text(title, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-        Spacer(Modifier.height(4.dp))
+        Surface(shape = RoundedCornerShape(50), color = MaterialTheme.colorScheme.secondaryContainer) {
+            Text(number, modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp), color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        }
+        Spacer(Modifier.height(10.dp))
+        Text(title, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.ExtraBold)
+        Spacer(Modifier.height(6.dp))
         Text(subtitle, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
     }
 }
@@ -161,16 +184,16 @@ private fun LifecycleScreen() {
         ScreenTitle("ข้อ 1", "Activity Lifecycle", "ติดตามวงจรชีวิตของหน้าจอผ่าน Toast และ Logcat")
         Spacer(Modifier.height(20.dp))
         Card(
-            shape = RoundedCornerShape(28.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-            elevation = CardDefaults.cardElevation(3.dp)
+            shape = RoundedCornerShape(36.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            elevation = CardDefaults.cardElevation(8.dp)
         ) {
             Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 Image(
                     painter = painterResource(R.drawable.student_photo),
                     contentDescription = "ภาพถ่ายนักศึกษา",
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.size(210.dp).clip(CircleShape)
+                    modifier = Modifier.size(210.dp).clip(RoundedCornerShape(32.dp)).border(5.dp, MaterialTheme.colorScheme.secondaryContainer, RoundedCornerShape(32.dp))
                 )
                 Spacer(Modifier.height(18.dp))
                 Text("ปาจรีย์ สุคนธชาติ", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
@@ -180,7 +203,7 @@ private fun LifecycleScreen() {
                 Spacer(Modifier.height(18.dp))
                 Text("ลองหมุนหน้าจอเพื่อดู Lifecycle ทำงาน", textAlign = TextAlign.Center)
                 Spacer(Modifier.height(12.dp))
-                Surface(color = MaterialTheme.colorScheme.secondaryContainer, shape = RoundedCornerShape(16.dp)) {
+                Surface(color = MaterialTheme.colorScheme.secondaryContainer, shape = RoundedCornerShape(22.dp)) {
                     Text(
                         "onCreate → onStart → onResume\nonPause → onStop → onDestroy",
                         modifier = Modifier.padding(16.dp),
@@ -359,7 +382,7 @@ private fun EmbeddedMap(latitude: String, longitude: String) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
             <link rel="stylesheet" href="leaflet/leaflet.css">
             <style>
-              html,body{width:100%;height:100%;margin:0;background:#e8eef0}
+              html,body{width:100%;height:100%;margin:0;background:#fff0f5}
               #map{position:fixed;inset:0;width:100vw;height:100vh}
             </style>
           </head>
